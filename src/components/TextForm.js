@@ -15,11 +15,19 @@ export default function TextForm(props) {
         console.log("On Change Clicked");
         setText(event.target.value);
     }
-    const [text, setText] = useState("Enter text here");
-  return (
+    const handleClearClick = (event) => {
+        setText("");
+    }
+    const handleReverseClick = (event) => {
+        let reverseString = text.split('').reverse().join("")
+        setText(reverseString);
+    }
+    
+    const [text, setText] = useState("");
+  return (  
     <div>
         <div className="container my-2">
-            <h1>{props.heading} - {text}</h1>
+            <h1>{props.heading}</h1>
             <form className="row g-3">
                 <div className="col-12">
                     <label htmlFor="myBox" className="form-label">Example Text area</label>
@@ -28,8 +36,16 @@ export default function TextForm(props) {
                 <div className="col-12">
                     <button type='button' className="btn btn-primary m-2" onClick={handleUpClick}>Convert to Upper Case</button>
                     <button type='button' className="btn btn-primary m-2" onClick={handleLowClick}>Convert to Lower Case</button>
+                    <button type='button' className="btn btn-primary m-2" onClick={handleClearClick}>Clear Text</button>
+                    <button type='button' className="btn btn-primary m-2" onClick={handleReverseClick}>Reverse Text</button>
                 </div>
             </form>
+        </div>
+        <div className="container my-2">
+            <h1>Your Text Summary</h1>
+            <p>{text.split(" ").length} words, and {text.length} characters</p>
+            <p>{0.08 * text.split(" ").length} Minutes to read</p>
+            <p>{text}</p>
         </div>
     </div>
   )
