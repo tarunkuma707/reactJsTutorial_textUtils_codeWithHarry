@@ -4,12 +4,14 @@ export default function TextForm(props) {
     const handleLowClick = () => {
         let lowerCaseText =  text.toLocaleLowerCase();
         setText(lowerCaseText);
+        props.showAlert("String Converted to Lower Case", "success");
     }
     const handleUpClick = () => {
         console.log("Upper Case Clicked");
         //setText("You clicked on HandleupClock");
         let upperCaseText =  text.toUpperCase();
         setText(upperCaseText);
+        props.showAlert("String Converted to Upper Case", "success");
     }
     const handleOnChange = (event) => {
         console.log("On Change Clicked");
@@ -17,10 +19,12 @@ export default function TextForm(props) {
     }
     const handleClearClick = (event) => {
         setText("");
+        props.showAlert("Text Box Cleared", "success");
     }
     const handleReverseClick = (event) => {
         let reverseString = text.split('').reverse().join("")
         setText(reverseString);
+        props.showAlert("String Reversed", "success");
     }
     
     const [text, setText] = useState("");
