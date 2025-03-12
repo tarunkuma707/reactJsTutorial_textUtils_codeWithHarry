@@ -20,7 +20,22 @@ function App() {
         setAlert(null);
       },2000);
     }
-  const toggleMode = () => {
+    const removeBodyClasses =() => {
+    const removeBodyClasses =() => {
+    const removeBodyClasses =() => {
+    const removeBodyClasses =() => {
+      document.body.classList.remove('bg-light')
+      document.body.classList.remove('bg-dark')
+      document.body.classList.remove('bg-warning')
+      document.body.classList.remove('bg-danger')
+      document.body.classList.remove('bg-success')
+    }
+    }
+    }
+    }
+  const toggleMode = (cls) => {
+    console.log(cls);
+    document.body.classList.add('bg-'+cls);
     if(mode === 'light'){
       setMode('dark');
       setfontColor('light');
