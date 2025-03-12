@@ -14,7 +14,6 @@ export default function TextForm(props) {
         props.showAlert("String Converted to Upper Case", "success");
     }
     const handleOnChange = (event) => {
-        console.log("On Change Clicked");
         setText(event.target.value);
     }
     const handleClearClick = (event) => {
@@ -47,7 +46,7 @@ export default function TextForm(props) {
         </div>
         <div className="container my-2" style={{color:props.mode==='dark' ? 'white' :'black' }}>
             <h1 className='mb-3'>Your Text Summary</h1>
-            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, and {text.split(" ").filter((element)=>{return element.length!==0}).length} characters</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, and {text.split(" ").filter((element)=>{return element.length!==0}).length} characters</p>
             <p>{0.08 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
             <p>{text.length>0 ? text : "Nothing to Preview."}</p>
         </div>
