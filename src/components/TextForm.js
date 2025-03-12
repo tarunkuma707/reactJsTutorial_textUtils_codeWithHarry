@@ -38,18 +38,18 @@ export default function TextForm(props) {
                     <textarea style={{ backgroundColor: props.mode==='light' ? 'white' : 'grey' , color: props.mode==='light' ? 'grey' : 'white'}} type="email" onChange={handleOnChange} className="form-control" value={text} id="myBox" rows="8"></textarea>
                 </div>
                 <div className="col-12">
-                    <button type='button' className="btn btn-primary m-2" onClick={handleUpClick}>Convert to Upper Case</button>
-                    <button type='button' className="btn btn-primary m-2" onClick={handleLowClick}>Convert to Lower Case</button>
-                    <button type='button' className="btn btn-primary m-2" onClick={handleClearClick}>Clear Text</button>
-                    <button type='button' className="btn btn-primary m-2" onClick={handleReverseClick}>Reverse Text</button>
+                    <button disabled={text.length===0} type='button' className="btn btn-primary m-2" onClick={handleUpClick}>Convert to Upper Case</button>
+                    <button disabled={text.length===0} type='button' className="btn btn-primary m-2" onClick={handleLowClick}>Convert to Lower Case</button>
+                    <button disabled={text.length===0} type='button' className="btn btn-primary m-2" onClick={handleClearClick}>Clear Text</button>
+                    <button disabled={text.length===0} type='button' className="btn btn-primary m-2" onClick={handleReverseClick}>Reverse Text</button>
                 </div>
             </form>
         </div>
         <div className="container my-2" style={{color:props.mode==='dark' ? 'white' :'black' }}>
-            <h1>Your Text Summary</h1>
-            <p>{text.split(" ").length} words, and {text.length} characters</p>
-            <p>{0.08 * text.split(" ").length} Minutes to read</p>
-            <p>{text.length>0 ? text : "Enter Something to preview."}</p>
+            <h1 className='mb-3'>Your Text Summary</h1>
+            <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, and {text.split(" ").filter((element)=>{return element.length!==0}).length} characters</p>
+            <p>{0.08 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
+            <p>{text.length>0 ? text : "Nothing to Preview."}</p>
         </div>
     </div>
   )
